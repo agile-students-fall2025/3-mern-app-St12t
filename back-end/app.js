@@ -79,7 +79,7 @@ app.post('/messages/save', async (req, res) => {
   }
 })
 
-// Allows to the frontend to fetch About Us Info with the required fields 
+// Allows for the frontend to fetch About Us Info with the required fields 
 app.get('/about', async (req, res) => {
   try {
     const aboutData = {
@@ -87,7 +87,7 @@ app.get('/about', async (req, res) => {
       paragraphs: [
         "Hi, my name is Steven Oluwabusi. I’m a Senior at NYU studying Computer Science and Mathematics. This past summer, I interned at Chime as a Software Engineer in the financial security department, where I scaled backend services and built user interfaces for agent tooling. I’ve also worked on projects ranging from developing mobile banking features for kids to creating a chatbot that answers common questions related to account activity and helping users quickly access personalized financial insights."
       ],
-      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+      imageUrl: "https://i.imgur.com/14OtcNr.jpeg" 
     }
     
     res.json({
