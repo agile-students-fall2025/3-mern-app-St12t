@@ -21,6 +21,7 @@ mongoose
 // load the dataabase models we want to deal with
 const { Message } = require('./models/Message')
 const { User } = require('./models/User')
+const { AboutUs } = require('./models/aboutUs')
 
 // a route to handle fetching all messages
 app.get('/messages', async (req, res) => {
@@ -74,6 +75,30 @@ app.post('/messages/save', async (req, res) => {
     return res.status(400).json({
       error: err,
       status: 'failed to save the message to the database',
+    })
+  }
+})
+
+// Allows to the frontend to fetch About Us Info with the required fields 
+app.get('/about', async (req, res) => {
+  try {
+    const aboutData = {
+      title: "About Me",
+      paragraphs: [
+        "Hi, my name is Steven Oluwabusi. I’m a Senior at NYU studying Computer Science and Mathematics. This past summer, I interned at Chime as a Software Engineer in the financial security department, where I scaled backend services and built user interfaces for agent tooling. I’ve also worked on projects ranging from developing mobile banking features for kids to creating a chatbot that answers common questions related to account activity and helping users quickly access personalized financial insights."
+      ],
+      imageUrl: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=face"
+    }
+    
+    res.json({
+      about: aboutData,
+      status: 'good',
+    })
+  } catch (err) {
+    console.error(err)
+    res.status(400).json({
+      error: err,
+      status: 'Failed to retrieve about information',
     })
   }
 })
